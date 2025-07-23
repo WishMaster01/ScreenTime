@@ -7,6 +7,7 @@ import { serve } from "inngest/express";
 import { inngest, functions } from "./inngest/index.js";
 
 import connectDB from "./configs/db.js";
+import showRouter from "./routes/showRoutes.js";
 
 // Initializing Dependencies
 const app = express();
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/inngest", serve({ client: inngest, functions }));
+app.use("/api/show", showRouter);
 
 // PORT Route
 app.listen(PORT, () => {
